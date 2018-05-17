@@ -107,6 +107,8 @@ tagAndRange();
 var res = sh.startBalancer();
 printjson(res);
 
+sleep(60000);
+
 while(sh.isBalancerRunning()) {
 	print(ISODate() + ": The Balancer is still running");
 	sleep(60000);
