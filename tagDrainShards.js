@@ -68,12 +68,10 @@ var tagAndRange = function() {
 	
 	    cfgDB.shards.find({}, { "_id": 1 }).forEach(function(shardDoc) {
 	        if (i < shardsToKeep) {
-			
-		        var res = sh.addShardTag(shardDoc._id, keepTagName);
-		   		if(res.ok != 1) {
-		   			print(res.errmsg);
-		   		};
-			
+				var res = sh.addShardTag(shardDoc._id, keepTagName);
+				if(res.ok != 1) {
+					print(res.errmsg);
+				};
 	        } else {
 				// This is to prevent chunk migration to the to-be-removed shards
 	            var res = cfgDB.shards.updateOne( { "_id" : shardDoc._id }, { "$set" : { "maxSize" : 1 } } );
@@ -100,7 +98,6 @@ var tagAndRange = function() {
 			if(res.ok != 1) {
 				print(res.errmsg);
 			};
-		
 		});
 	};	
 };
