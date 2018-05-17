@@ -108,8 +108,8 @@ var res = sh.startBalancer();
 printjson(res);
 
 while(sh.isBalancerRunning()) {
-	print(str(ISODate()) + ": The Balancer is still running");
-	sleep(60);
+	print(ISODate() + ": The Balancer is still running");
+	sleep(60000);
 };
 
 removeShards();
