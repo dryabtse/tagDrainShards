@@ -10,13 +10,13 @@ var noGo = true;
 var pickRandomShard = function(criteria) {
 	var count = cfgDB.shards.count(criteria);
 	var random = Math.floor((Math.random() * count) + 1);
-	
 	var shard = "";
 	i = 1;
 	cfgDB.shards.find(criteria, {"_id": 1}).forEach(function(doc) {
 		if (i == random) {
 			shard = doc._id;
 		};
+		i++;
 	});
 	
 	return shard;
